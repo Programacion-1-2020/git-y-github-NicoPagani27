@@ -9,22 +9,35 @@ def verificar_ganador(tablero):
 
 def imprimir_tablero(titulo, tablero, ocultar_barcos=False):
     print(titulo)
-    print("┏━━━━━━━━━┓")
+    # print("  ┏", end="")
+    # for n in range(len(tablero)*2 - 1):
+    #     print("━", end="")
+    print("  ┃", end="")
+    for k in range(len(tablero)):
+        if k <= 9:
+            print('0', end="")
+        print(f"{k}┃", end="")
+    print(" ")
     for i in range(len(tablero)):
-        print("┃", end="")
+        if i <= 9:
+            print('0', end="")
+        print(f"{i}┃", end="")
         for j in range(len(tablero[i])):
             if tablero[i][j] == 0:
-                print("‐", end="┃")
+                print("‐-", end="┃")
             elif tablero[i][j] == 1 and not ocultar_barcos:
-                print('◉', end="┃")
+                print('◉◉', end="┃")
             elif tablero[i][j] == 1 and ocultar_barcos:
-                print('-', end="┃")
+                print('--', end="┃")
             elif tablero[i][j] == 2:
-                print('✦', end="┃")
+                print('✦✦', end="┃")
             elif tablero[i][j] == 3:
-                print('✘', end="┃")
+                print('✘✘', end="┃")
         print("")
-    print("┗━━━━━━━━━┛")
+    print("  ┗", end="")
+    for n in range(len(tablero) * 3 - 1):
+        print("━", end="")
+    print("┛")
     print("TIPS: ◉ = BARCO   ‐ = NADA    ✘ = HUNDIDO    ✦ = AGUA")
 
 

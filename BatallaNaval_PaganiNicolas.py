@@ -15,17 +15,24 @@ from funciones import *
 print('╔═══════════════════════════════╗')
 print('║ BIENVENIDO A LA BATALLA NAVAL ║')
 print('╚═══════════════════════════════╝')
-#t = [[0]*5 for i in range(5)]
-#print(t)
-dimension_tablero = 5
-tablero_j1 = [
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-]
 
+tipeo_incorrecto_dimension_tablero = True
+while tipeo_incorrecto_dimension_tablero:
+    dimension_tablero = input('𝐈𝐧𝐠𝐫𝐞𝐬𝐞 𝐝𝐢𝐦𝐞𝐧𝐬𝐢𝐨𝐧 𝐝𝐞𝐥 𝐭𝐚𝐛𝐥𝐞𝐫𝐨 (𝐞𝐧𝐭𝐫𝐞 𝟓 𝐲 𝟓𝟎): ━▶ ')
+    es_letra_tablero = True
+    try:
+        dimension_tablero = int(dimension_tablero)
+        es_letra_tablero = False
+    except ValueError:
+        es_letra_tablero = True
+
+    if es_letra_tablero:
+        print("𝐈𝐧𝐠𝐫𝐞𝐬𝐚𝐫 𝐍𝐮𝐦𝐞𝐫𝐨")
+        tipeo_incorrecto_dimension_tablero = True
+    elif 5 <= dimension_tablero <= 50:
+        tipeo_incorrecto_dimension_tablero = False
+
+tablero_j1 = [[0]*dimension_tablero for i in range(dimension_tablero)]
 
 imprimir_tablero("━▶ 𝐄𝐬𝐭𝐞 𝐞𝐬 𝐞𝐥 𝐓𝐚𝐛𝐥𝐞𝐫𝐨 𝐞𝐧 𝐁𝐥𝐚𝐧𝐜𝐨 ◀━", tablero_j1)
 while True:
@@ -85,13 +92,7 @@ for i in range(cant_barcos):
 
 imprimir_tablero("𝐓𝐀𝐁𝐋𝐄𝐑𝐎 𝐈𝐍𝐈𝐂𝐈𝐀𝐋", tablero_j1)
 
-tablero_computadora = [
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-]
+tablero_computadora = [[0]*dimension_tablero for i in range(dimension_tablero)]
 print('𝐂𝐎𝐌𝐏𝐔: 𝐄𝐬𝐭𝐨𝐲 𝐮𝐛𝐢𝐜𝐚𝐧𝐝𝐨 𝐦𝐢𝐬 𝐛𝐚𝐫𝐜𝐨𝐬...')
 for i in range(cant_barcos):
     pudo_colocar_barco_compu = False
@@ -108,7 +109,7 @@ while not hay_ganador:
     fila = int(input('\n𝐅𝐈𝐋𝐀 ━▶ '))
     resultado_tiro = tiro(tablero_computadora, columna, fila)
     print(resultado_tiro)
-    imprimir_tablero('Asi ha quedado el tablero de la computadora:', tablero_computadora, ocultar_barcos=True)
+    imprimir_tablero('𝐀𝐬𝐢 𝐡𝐚 𝐪𝐮𝐞𝐝𝐚𝐝𝐨 𝐞𝐥 𝐭𝐚𝐛𝐥𝐞𝐫𝐨 𝐝𝐞 𝐥𝐚 𝐜𝐨𝐦𝐩𝐮𝐭𝐚𝐝𝐨𝐫𝐚:', tablero_computadora, ocultar_barcos=True)
 
     if verificar_ganador(tablero_computadora):
         print("GANASTE!!!🎉🎉🎉")

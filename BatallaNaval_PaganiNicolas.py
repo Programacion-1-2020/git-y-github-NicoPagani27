@@ -105,8 +105,34 @@ print('𝐂𝐎𝐌𝐏𝐔: 𝐋𝐢𝐬𝐭𝐨!!!')
 hay_ganador = False
 while not hay_ganador:
     print('𝐈𝐧𝐠𝐫𝐞𝐬𝐞 𝐮𝐛𝐢𝐜𝐚𝐜𝐢𝐨𝐧 𝐝𝐞𝐥 𝐭𝐢𝐫𝐨')
-    columna = int(input('\n𝐂𝐎𝐋𝐔𝐌𝐍𝐀 ━▶ '))
-    fila = int(input('\n𝐅𝐈𝐋𝐀 ━▶ '))
+
+    verificacion_columna = False
+    while not verificacion_columna:
+        columna = input('\n𝐂𝐎𝐋𝐔𝐌𝐍𝐀 ━▶ ')
+        try:
+            columna = int(columna)
+            if columna < 0 or columna > dimension_tablero - 1:
+                print('𝐈𝐧𝐠𝐫𝐞𝐬𝐚𝐫 𝐝𝐞 𝐍𝐮𝐞𝐯𝐨')
+                verificacion_columna = False
+            else:
+                verificacion_columna = True
+        except ValueError:
+            verificacion_columna = False
+            print('𝐈𝐧𝐠𝐫𝐞𝐬𝐚𝐫 𝐝𝐞 𝐍𝐮𝐞𝐯𝐨')
+
+    verificacion_fila = False
+    while not verificacion_fila:
+        fila = input('\n𝐅𝐈𝐋𝐀 ━▶ ')
+        try:
+            fila = int(fila)
+            if fila < 0 or fila > dimension_tablero - 1:
+                print('𝐈𝐧𝐠𝐫𝐞𝐬𝐚𝐫 𝐝𝐞 𝐍𝐮𝐞𝐯𝐨')
+                verificacion_fila = False
+            else:
+                verificacion_fila = True
+        except ValueError:
+            verificacion_fila = False
+            print('𝐈𝐧𝐠𝐫𝐞𝐬𝐚𝐫 𝐝𝐞 𝐍𝐮𝐞𝐯𝐨')
     resultado_tiro = tiro(tablero_computadora, columna, fila)
     print(resultado_tiro)
     imprimir_tablero('𝐀𝐬𝐢 𝐡𝐚 𝐪𝐮𝐞𝐝𝐚𝐝𝐨 𝐞𝐥 𝐭𝐚𝐛𝐥𝐞𝐫𝐨 𝐝𝐞 𝐥𝐚 𝐜𝐨𝐦𝐩𝐮𝐭𝐚𝐝𝐨𝐫𝐚:', tablero_computadora, ocultar_barcos=True)

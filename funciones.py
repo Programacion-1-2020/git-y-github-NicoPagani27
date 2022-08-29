@@ -9,9 +9,6 @@ def verificar_ganador(tablero):
 
 def imprimir_tablero(titulo, tablero, ocultar_barcos=False):
     print(titulo)
-    # print("  ┏", end="")
-    # for n in range(len(tablero)*2 - 1):
-    #     print("━", end="")
     print("  ┃", end="")
     for k in range(len(tablero)):
         if k <= 9:
